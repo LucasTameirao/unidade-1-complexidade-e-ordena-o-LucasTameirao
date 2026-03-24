@@ -9,12 +9,12 @@ public class InsertionSort<T extends Comparable<T>> implements IOrdenador<T> {
     private double nanoToMilli = 1.0/1_000_000;
 
     @Override
-    public int getComparacoes() {
+    public long getComparacoes() {
         return comparacoes;
     }
 
     @Override
-    public int getMovimentacoes() {
+    public long getMovimentacoes() {
         return movimentacoes;
     }
 
@@ -51,9 +51,10 @@ public class InsertionSort<T extends Comparable<T>> implements IOrdenador<T> {
             while (j >= 0 && dadosOrdenados[j].compareTo(temp) > 0) {
                 dadosOrdenados[j+1] = dadosOrdenados[j];
                 j--;
-                this.comparacoes++;
+                
                 this.movimentacoes++;            
             }
+            this.comparacoes++;
             dadosOrdenados[j+1] = temp;
         }	
         terminar();
