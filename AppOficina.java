@@ -88,12 +88,27 @@ public class AppOficina {
     static int exibirMenuOrdenadores() {
         cabecalho();
         System.out.println("1 - Bolha");
-        System.out.println("2 - Inserção");
-        System.out.println("3 - Seleção");
-        System.out.println("4 - Mergesort");
+        System.out.println("2 - Inserção"); 
+        System.out.println("3 - Seleção"); 
+        System.out.println("4 - Mergesort"); 
+        System.out.println("5 - Heapsort"); 
         System.out.println("0 - Finalizar");
        
-        return lerNumero("Digite sua opção", Integer.class);
+        return lerOpcao("Digite sua opção: ", Integer.class);
+    }
+
+    static <T extends Number> T lerOpcao(String mensagem, Class<T> classe) {
+        
+    	T valor;
+        
+    	System.out.println(mensagem);
+    	try {
+            valor = classe.getConstructor(String.class).newInstance(teclado.nextLine());
+        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException 
+        		| InvocationTargetException | NoSuchMethodException | SecurityException e) {
+            return null;
+        }
+        return valor;
     }
 
     static int exibirMenuComparadores() {
